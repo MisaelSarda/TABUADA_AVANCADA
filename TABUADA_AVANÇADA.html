@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada Avançada</title>
+</head>
+<body>
+    <h1>Tabuada Avançada</h1>
+    
+    <label for="numero">Informe até que número deseja a tabuada: </label>
+    <input type="number" id="numero" min="1" step="1" value="2">
+    
+    <label for="limite">Informe até que número deseja multiplicar: </label>
+    <input type="number" id="limite" min="1" step="1" value="10">
+    
+    <button onclick="exibirTabuadas()">Exibir Tabuadas</button>
+    
+    <div id="resultados"></div>
+    
+    <script>
+        function calcularTabuada(numero, limite) {
+            let tabuada = "";
+            for (let i = 1; i <= limite; i++) {
+                tabuada += `${numero} x ${i} = ${numero * i}<br>`;
+            }
+            return tabuada;
+        }
+        
+        function exibirTabuadas() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const limite = parseInt(document.getElementById("limite").value);
+            const resultadosDiv = document.getElementById("resultados");
+            
+            resultadosDiv.innerHTML = ""; // Limpa os resultados anteriores
+            
+            for (let i = 1; i <= numero; i++) {
+                const tabuada = calcularTabuada(i, limite);
+                resultadosDiv.innerHTML += `<h2>Tabuada do ${i}:</h2>${tabuada}<br>`;
+            }
+        }
+    </script>
+</body>
+</html>
